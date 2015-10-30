@@ -27,6 +27,7 @@ PKG_CHECK_MODULES(PCI, libpci >= $LIBPCI_REQUIRED)
 AC_CONFIG_FILES([
 Makefile
 src/Makefile
+pci.d/Makefile
 ])
 
 AC_OUTPUT
