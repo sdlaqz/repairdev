@@ -1,0 +1,18 @@
+#  This file is part of repairdev.
+#
+
+[Unit]
+Description=Repair special hardware for isoft linux
+Documentation=man:repairdev.service(8)
+#DefaultDependencies=no
+#ConditionPathIsReadWrite=!/
+#Conflicts=shutdown.target
+ConditionPathIsReadWrite=/etc
+Before=graphical.target
+After=systemd-remount-fs.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=@bindir@/repairdev
+TimeoutSec=0
