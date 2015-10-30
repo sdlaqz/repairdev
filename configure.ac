@@ -23,6 +23,9 @@ PKG_CHECK_MODULES(PCI, libpci >= $LIBPCI_REQUIRED)
 # Checks for typedefs, structures, and compiler characteristics.
 
 # Checks for library functions.
+AUTHEXEC_USER=root
+AC_SUBST(AUTHEXEC_USER)
+
 
 AC_CONFIG_FILES([
 Makefile
