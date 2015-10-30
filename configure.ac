@@ -26,6 +26,8 @@ PKG_CHECK_MODULES(PCI, libpci >= $LIBPCI_REQUIRED)
 
 AC_CONFIG_FILES([
 Makefile
+data/Makefile
+data/repairdev.service
 src/Makefile
 pci.d/Makefile
 ])
