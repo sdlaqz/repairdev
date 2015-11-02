@@ -2,8 +2,11 @@ servicedir = $(libdir)/systemd/system
 service_in_files = repairdev.service.in
 service_DATA = $(service_in_files:.service.in=.service)
 
-EXTRA_DIST = $(serivice_in_files)
+$(service_DATA): $(service_in_files)
+	$(AM_V_GEN) $(SED) 's#@BIN_DIR@#$(bindir)#' $^ > $@
 
-CLEANFILES = $(serivice_DATA)
+EXTRA_DIST = $(service_in_files)
 
-DISTCLEANFILES = $(serivice_DATA)
+CLEANFILES = $(service_DATA)
+
+DISTCLEANFILES = $(service_DATA)
