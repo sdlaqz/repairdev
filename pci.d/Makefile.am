@@ -21,4 +21,7 @@ install-data-local: install-pci-scripts
 
 uninstall-local: uninstall-pci-scripts
 
+EXTRA_DIST = $(repair_scripts)
+
 -include $(top_srcdir)/git.mk
+
