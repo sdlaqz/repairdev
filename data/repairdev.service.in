@@ -4,7 +4,7 @@
 [Unit]
 Description=Repair special hardware for isoft linux
 Documentation=man:repairdev.service(8)
-#DefaultDependencies=no
+DefaultDependencies=no
 #ConditionPathIsReadWrite=!/
 #Conflicts=shutdown.target
 ConditionPathIsReadWrite=/etc
@@ -14,5 +14,5 @@ After=systemd-remount-fs.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=@bindir@/repairdev
+ExecStart=@BIN_DIR@/repairdev
 TimeoutSec=0

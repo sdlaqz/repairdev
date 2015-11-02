@@ -13,6 +13,7 @@ AM_SILENT_RULES([yes])
 # Checks for programs.
 AC_PROG_CC
 AC_PROG_INSTALL
+AC_PROG_SED
 
 # Checks for libraries.
 LIBPCI_REQUIRED=3.3.1
@@ -22,15 +23,9 @@ PKG_CHECK_MODULES(PCI, libpci >= $LIBPCI_REQUIRED)
 
 # Checks for typedefs, structures, and compiler characteristics.
 
-# Checks for library functions.
-AUTHEXEC_USER=root
-AC_SUBST(AUTHEXEC_USER)
-
-
 AC_CONFIG_FILES([
 Makefile
 data/Makefile
-data/repairdev.service
 src/Makefile
 pci.d/Makefile
 ])
