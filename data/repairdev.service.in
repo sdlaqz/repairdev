@@ -8,7 +8,7 @@ DefaultDependencies=no
 #ConditionPathIsReadWrite=!/
 #Conflicts=shutdown.target
 ConditionPathIsReadWrite=/etc
-Before=graphical.target
+Before=firstboot.service graphical.target
 After=systemd-remount-fs.service
 
 [Service]
@@ -16,3 +16,6 @@ Type=oneshot
 RemainAfterExit=yes
 ExecStart=@BIN_DIR@/repairdev
 TimeoutSec=0
+
+[Install]
+WantedBy=multi-user.target
