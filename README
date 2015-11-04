@@ -1,0 +1,10 @@
+repairdev
+==========
+
+用于针对特定型号的硬件，单独执行脚本来调整/修复系统问题。
+
+systemd 服务repairdev.service 需要启用才能生效，此服务将在重新挂载文件系统(systemd-remount-fs)之后，首次配置(firstboot)或图形界面(graphical)之前启动。
+
+repairdev服务启动之后，将会查找当前系统的pci硬件信息，并获取当前机器所有PCI设备的vendor_id和device_id，如果存在某个/etc/pci.d/${vendor_id}-${device_id}/repair.sh 文件，且此文件有可执行权限，repair.sh脚本将被执行。
+
+repair.sh 脚本应尽可能少地占用系统启动时间，因此在一开始执行时，就应检测需要特殊处理的情况是否已被处理过，如已被处理，应尽早退出，以防止每次启动时同样的处理逻辑被重复执行。
