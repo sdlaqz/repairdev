@@ -11,7 +11,7 @@ EndSection
 EOF
 }
 
-if [ -f /etc/X11/xorg.conf.d/20-intel.conf ];then
+if [ -f $conf_file ];then
 	if grep DRI $conf_file|grep 2;then
 		exit 0
 	else

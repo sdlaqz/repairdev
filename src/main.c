@@ -37,8 +37,6 @@ int runsh(char* scriptpath)
 		printf("call fork error\n");
 		ret = 1;
 	} else if (pid == 0) {
-		//setreuid(user->pw_uid, 0);
-		//setregid(user->pw_gid, 0);
 		execl(scriptpath, scriptpath, NULL);
 	} else {
 		int status;
@@ -60,21 +58,9 @@ int runsh(char* scriptpath)
 
 int fixdev(struct pci_dev *dev)
 {
-	//unsigned int c;
-	//char namebuf[1024], *name;
 	char path[1024];
 
-	//pci_fill_info(dev, PCI_FILL_IDENT | PCI_FILL_BASES | PCI_FILL_CLASS);	/* Fill in header info we need */
-	//c = pci_read_byte(dev, PCI_INTERRUPT_PIN);				/* Read config register directly */
-	//printf("%04x:%02x:%02x.%d vendor=%04x device=%04x class=%04x irq=%d (pin %d) base0=%lx",
-	//		dev->domain, dev->bus, dev->dev, dev->func, dev->vendor_id, dev->device_id,
-	//		dev->device_class, dev->irq, c, (long) dev->base_addr[0]);
-
-	///* Look up and print the full name of the device */
-	//name = pci_lookup_name(pacc, namebuf, sizeof(namebuf), PCI_LOOKUP_DEVICE, dev->vendor_id, dev->device_id);
-	//printf(" (%s)\n", name);
-
-	snprintf(path, sizeof(path), "%s/pci.d/%04x/%04x/repair.sh", SYSCONFDIR, dev->vendor_id, dev->device_id);
+	snprintf(path, sizeof(path), "%s/pci.d/%04x-%04x/repair.sh", SYSCONFDIR, dev->vendor_id, dev->device_id);
 	if (access(path, F_OK & X_OK) == 0) {
 		runsh(path);
 	}
@@ -86,14 +72,13 @@ int main(void)
 {
 	struct pci_dev *dev;
 
-	pacc = pci_alloc();		/* Get the pci_access structure */
-	/* Set all options you want -- here we stick with the defaults */
-	pci_init(pacc);		/* Initialize the PCI library */
-	pci_scan_bus(pacc);		/* We want to get the list of devices */
-	for (dev=pacc->devices; dev; dev=dev->next)	/* Iterate over all devices */
+	pacc = pci_alloc();
+	pci_init(pacc);
+	pci_scan_bus(pacc);
+	for (dev=pacc->devices; dev; dev=dev->next)
 	{
 		fixdev(dev);
 	}
-	pci_cleanup(pacc);		/* Close everything */
+	pci_cleanup(pacc);
 	return 0;
 }
