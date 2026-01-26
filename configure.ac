@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT(repairdev, 0.3, https://github.com/yetist/repairdev)
+AC_INIT(repairdev, 0.4, https://github.com/yetist/repairdev)
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz tar-ustar])
 AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_HEADERS([config.h])
