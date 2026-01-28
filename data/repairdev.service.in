@@ -14,7 +14,7 @@ After=systemd-remount-fs.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=@BIN_DIR@/repairdev
+ExecStart=@BIN_DIR@/check7200.sh
 TimeoutSec=0
 
 [Install]

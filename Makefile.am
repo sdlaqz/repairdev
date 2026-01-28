@@ -1,2 +1,2 @@
-SUBDIRS = src pci.d data
+SUBDIRS = pci.d data
 -include $(top_srcdir)/git.mk

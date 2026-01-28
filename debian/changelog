@@ -1,3 +1,15 @@
+repairdev (0.4.0-3) unstable; urgency=medium
+
+  * Fix issue install and uninstall pkg 
+
+ -- loongson <loongson@loongson-pc>  Mon, 28 Jan 2026 14:42:24 +0800
+
+repairdev (0.4.0-2) unstable; urgency=medium
+
+  * Initial release
+
+ -- loongson <loongson@loongson-pc>  Mon, 27 Jan 2026 17:42:24 +0800
+
 repairdev (0.4.0-1) unstable; urgency=medium
 
   * Initial release

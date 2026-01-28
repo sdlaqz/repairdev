@@ -9,6 +9,6 @@ Homepage: https://www.loongson.cn/
 Package: repairdev
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Build-Depends: libpci-dev
+Build-Depends: 
 Description: A detection and repair tool.
  It is used to execute scripts separately for specific hardware models to adjust or fix system issues.

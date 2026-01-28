@@ -1,0 +1,10 @@
+#!/bin/bash
+# postinst script for repairdev
+#
+# see: dh_installdeb(1)
+
+set -e
+
+systemctl enable repairdev.service || true
+systemctl start repairdev.service || true
+

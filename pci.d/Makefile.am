@@ -4,15 +4,13 @@ repair_scripts = $(sort $(wildcard *.sh))
 
 install-pci-scripts:
 	for name in $(repair_scripts); do \
-		DEVID=`echo $$name | cut -d. -f1`; \
-		mkdir -p $(DESTDIR)$(sysconfdir)/pci.d/$$DEVID; \
-		$(INSTALL_SCRIPT) $(srcdir)/$$name $(DESTDIR)$(sysconfdir)/pci.d/$$DEVID/repair.sh; \
+		mkdir -p $(DESTDIR)$(datadir)/pci.d/; \
+		$(INSTALL_SCRIPT) $(srcdir)/$$name $(DESTDIR)$(datadir)/pci.d/check7200.sh; \
 	done;
 
 uninstall-pci-scripts:
 	-for name in $(repair_scripts); do \
-		DEVID=`echo $$name | cut -d. -f1`; \
-		rm -f $(DESTDIR)$(sysconfdir)/pci.d/$$DEVID/repair.sh; \
+		rm -f $(DESTDIR)$(datadir)/pci.d/check7200.sh; \
 	done;
 
 install-data-local: install-pci-scripts
