@@ -1,0 +1,14 @@
+Source: repairdev
+Section: admin
+Priority: optional
+Maintainer: aqz <aqz@loongson-pc>
+Build-Depends: debhelper (>= 11)
+Standards-Version: 4.1.3
+Homepage: https://www.loongson.cn/
+
+Package: repairdev
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Build-Depends: libpci-dev
+Description: A detection and repair tool.
+ It is used to execute scripts separately for specific hardware models to adjust or fix system issues.
