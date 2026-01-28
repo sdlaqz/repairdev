@@ -4,24 +4,24 @@
  *
  * Copyright (C) 2015 yetist <yetist@yetioffice>
  *
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * */
 
 #include <stdio.h>
-#include <sys/wait.h> 
+#include <sys/wait.h>
 #include <unistd.h>
 
 #include <pci/pci.h>
@@ -60,6 +60,7 @@ int fixdev(struct pci_dev *dev)
 {
 	char path[1024];
 
+	pci_fill_info(dev, PCI_FILL_IDENT | PCI_FILL_CLASS | PCI_FILL_CLASS_EXT | PCI_FILL_SUBSYS | PCI_FILL_PARENT);
 	snprintf(path, sizeof(path), "%s/pci.d/%04x-%04x/repair.sh", SYSCONFDIR, dev->vendor_id, dev->device_id);
 	if (access(path, F_OK & X_OK) == 0) {
 		runsh(path);

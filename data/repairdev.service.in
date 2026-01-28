@@ -2,7 +2,7 @@
 #
 
 [Unit]
-Description=Repair special hardware for isoft linux
+Description=Repair special hardware for Linux
 Documentation=man:repairdev.service(8)
 DefaultDependencies=no
 #ConditionPathIsReadWrite=!/
